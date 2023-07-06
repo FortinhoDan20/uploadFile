@@ -1,39 +1,59 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #E0E2E3 ;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.container{
+  display:flex;
 }
-
-.App-header {
-  min-height: 100vh;
+main{
+  width: 100%;
+  padding: 20px;
+}
+.sidebar{
+  background: #000;
+  color: #fff;
+  height: 100vh;
+  width: 200px;
+  transition: all 0.5s;
+}
+.top_section{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items:center;
+  padding:20px 15px;
 }
-
-.App-link {
-  color: rgb(112, 76, 182);
+.logo{
+  font-size: 30px;
 }
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.bars{
+  display: flex;
+  font-size: 25px;
+  margin-left: 50px;
+}
+.link{
+  display: flex;
+  color: #fff;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+}
+.link:hover{
+  background:lightskyblue;
+  color: #000;
+  transition: all 0.5s;
+}
+.active{
+  background: lightskyblue;
+  color: #000;
+}
+.icon, .link_text{
+  font-size: 20px;
 }
