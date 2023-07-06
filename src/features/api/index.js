@@ -12,3 +12,5 @@ API.interceptors.request.use((req) => {
 
 //Routes for auth
 export const addNewProduct = (formData) => API.post('/api/product/', formData)
+
+export const uploadFile = (formData) => API.post ('/api/upload/file', formData)

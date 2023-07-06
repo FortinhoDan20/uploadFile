@@ -21,11 +21,28 @@ export const createProduct = createAsyncThunk(
     }
 )
 
+export const uploadFile = createAsyncThunk(
+    "product/upload",
+    async ({ formValue, toast }, { rejectWithValue }) => {
+
+        try {
+            
+            const response = await api.uploadFile(formValue)
+            return response.data
+
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+
+    }
+)
+
 
 const productSlice = createSlice({
     name: "Courrier",
     initialState: {
         product: {},
+        productURL: {},
         products: [],
         error: "",
         loadings: false
@@ -40,6 +57,17 @@ const productSlice = createSlice({
             state.product = action.payload.data
         },
         [createProduct.rejected]: (state, action) => {
+            state.loading = false
+            state.error = action.payload.message
+        },
+        [uploadFile.pending]: (state, action) => {
+            state.loading = true
+        },
+        [uploadFile.fulfilled]: (state, action) => {
+            state.loading = false
+            state.productURL = action.payload.data
+        },
+        [uploadFile.rejected]: (state, action) => {
             state.loading = false
             state.error = action.payload.message
         },
