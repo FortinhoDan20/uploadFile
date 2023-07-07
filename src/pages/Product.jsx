@@ -23,6 +23,7 @@ const initialState = {
 const Product = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { loading, error } = useSelector((state) => ({ ...state.product }));
+  //recuperation de l'url
   const { fileLink } = useSelector((state) => ({ ...state.upload }));
   console.log(fileLink);
   const { name, prix } = formValue;
@@ -102,6 +103,8 @@ const Product = () => {
               invalid
               validation="Please provide your image"
             /> */}
+
+            {/* Input file */}
             <InputFile />
           </div>
 

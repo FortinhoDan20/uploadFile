@@ -10,9 +10,11 @@ const useFileUpload = () => {
       const fileToUpload = e.target.files[0];
       console.log(fileToUpload);
 
+      //fornatage fichier
       const formData = new FormData();
       formData.append("image", fileToUpload);
 
+      //envoi upload
       dispatch(onUploadFile({ image: fileToUpload, toast }));
     }
   };
