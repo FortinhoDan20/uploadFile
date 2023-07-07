@@ -3,10 +3,10 @@ import * as api from "../api";
 
 export const onUploadFile = createAsyncThunk(
   "upload/onUploadFile",
-  async ({ file, toast }, { rejectWithValue }) => {
+  async ({ image, toast }, { rejectWithValue }) => {
     try {
-      const response = await api.uploadFile(file);
-      toast.success("Successfull created Product");
+      const response = await api.uploadFile(image);
+      toast.success("Successfull File Upload");
       //   useNavigate("/");
       return response.data;
     } catch (error) {
@@ -20,19 +20,21 @@ const uploadSlice = createSlice({
   initialState: {
     fileLink: null,
     error: "",
-    loadings: false,
+    loading: false,
   },
   extraReducers: {
     [onUploadFile.pending]: (state, action) => {
       state.loading = true;
     },
     [onUploadFile.fulfilled]: (state, action) => {
+      console.log(action);
       state.loading = false;
       state.fileLink = action.payload.data?.url;
     },
     [onUploadFile.rejected]: (state, action) => {
+      console.log(action);
       state.loading = false;
-      state.error = action.payload.message;
+      // state.error = action.payload.message;
     },
   },
 });

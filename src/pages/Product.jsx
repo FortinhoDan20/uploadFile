@@ -3,7 +3,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBFile,
   MDBInput,
   MDBSpinner,
   MDBValidation,
@@ -11,6 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import InputFile from "../components/InputFile";
 import { createProduct } from "../features/product/productSlice";
 //import {  useNavigate } from 'react-router-dom';
 
@@ -23,7 +23,9 @@ const initialState = {
 const Product = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { loading, error } = useSelector((state) => ({ ...state.product }));
-  const { name, prix, image } = formValue;
+  const { fileLink } = useSelector((state) => ({ ...state.upload }));
+  console.log(fileLink);
+  const { name, prix } = formValue;
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
@@ -89,7 +91,7 @@ const Product = () => {
           </div>
 
           <div className="col-md-12">
-            <MDBFile
+            {/* <MDBFile
               label="Entre le fichiers"
               id="customFile"
               type="file"
@@ -99,7 +101,8 @@ const Product = () => {
               required
               invalid
               validation="Please provide your image"
-            />
+            /> */}
+            <InputFile />
           </div>
 
           <div className="col-md-12">
