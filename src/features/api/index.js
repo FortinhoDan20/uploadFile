@@ -14,6 +14,4 @@ API.interceptors.request.use((req) => {
 //Routes for auth
 export const addNewProduct = (formData) => API.post("/api/product/", formData);
 
-//Upload files
-export const uploadFile = (files) =>
-  API.post("https://archive-api.onrender.com/api/product/upload/file", files);
+export const uploadFile = (formData) => API.post("/api/upload/file", formData);
